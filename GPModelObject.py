@@ -248,7 +248,7 @@ class GPModelObject(object):
         self.data_d['y_std'] = np.sqrt(s * self.y_std**2)
         
         # Mean square error of training data
-        self.mse_d = ((self.data_d['y_pred']-self.data_d['y'])**2).mean().round(3)
+        self.mse_d = round(((self.data_d['y_pred']-self.data_d['y'])**2).mean(), 3)
         
         # Prediction of test data
         m, s = self.m.predict_y(self.data_t_num.values)
@@ -260,7 +260,7 @@ class GPModelObject(object):
         self.data_t['y_std'] = np.sqrt(s * self.y_std**2)
         
         # Mean square error of test data
-        self.mse_t = ((self.data_t['y_pred']-self.data_t['y'])**2).mean().round(3)
+        self.mse_t = round(((self.data_t['y_pred']-self.data_t['y'])**2).mean(), 3)
         
         print('MSE training: ' + str(self.mse_d))
         print('MSE testing: ' + str(self.mse_t))
